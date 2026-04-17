@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "motion/react"
 import { useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
 import { GiHamburgerMenu } from "react-icons/gi";
+import FinalResult from '../components/FinalResult'
 
 function History() {
   const [topics , setTopics] = useState([])
@@ -14,6 +15,7 @@ function History() {
   const [isSidebarOpen, setIsSidebarOpen] =useState(false);
   const [selectedNote, setSelectedNote] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [activeNoteId, setActiveNotesId] = useState(null);
 
   useEffect(()=>{
     const myNotes = async () => {
@@ -31,10 +33,11 @@ function History() {
 
   const openNotes = async (noteId) => {
     setLoading(true)
+    setActiveNotesId(noteId)
     try {
-      const res = await axios.get(serverUrl + `/api/notes/${noteId}`,{withCredentials:true})
-
-      setSelectedNote(res.data.content)
+      const res = await axios.get(serverUrl + `/api/notes/${noteId}`, {withCredentials:true})
+      const data = Array.isArray(res.data) ? res.data[0] : res.data
+      setSelectedNote(data.contest)
       setLoading(false)
     } catch (error) {
       console.log(error)
@@ -150,8 +153,14 @@ function History() {
             <ul className='space-y-3'>
             
               {topics.map((t,i)=>(
-                <li key={i} onClick={()=>{openNotes(t._id)}} className='cursor-pointer rounded-xl p-3 bg-white/5 border
-                border-white/10 hover:bg-white/10'>
+                <li key={i} onClick={()=>{openNotes(t._id)}} className={`
+              cursor-pointer rounded-xl p-3 border transition-all
+              ${
+                activeNoteId === t._id
+                ? "bg-indigo-500/30 border-indigo-400 shadow-[0_0_0_1px_rgba(99,102,241,0.6)]"
+                : "bg-white/5 border-white/10 hover:bg-white/10"
+              }
+              `}>
                 
                 <p className='text-sm font-semibold text-white '>{t.topic}</p>
                 
