@@ -7,7 +7,7 @@ import { useDispatch , useSelector} from 'react-redux'
 import Notes from './pages/Notes'
 import History from './pages/History'
 import Pricing from './pages/Pricing'
-export const serverUrl ="http://localhost:8000"
+export const serverUrl = import.meta.env.VITE_BACKEND_URL
 
 function App() {
   const dispatch = useDispatch()

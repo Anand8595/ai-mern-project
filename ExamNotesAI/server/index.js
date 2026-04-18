@@ -12,7 +12,7 @@ dotenv.config()
 const app = express()
 
 app.use(cors({
-    origin: "*",
+    origin: "https://ai-mern-project.vercel.app",
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
 }))
