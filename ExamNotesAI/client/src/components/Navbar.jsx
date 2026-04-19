@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom"
 
 function Navbar() {
     const{userData}=useSelector((state)=>state.user)
-    const credits=userData.credits
+    const credits = userData?.credits ?? 0
     const [showCredits,setShowCredits] = useState(false)
     const [showProfile,setShowProfile] = useState(false)
     const navigate = useNavigate()
@@ -98,7 +98,8 @@ function Navbar() {
                 bg-white/10 border border-white/20 text-white text-sm
                 shadow-md cursor-pointer">
                     
-                    <span className="text-lg">{userData?.name.slice(0,1).toUpperCase()}</span>
+                    <span className="text-lg">{userData?.name?.slice(0,1).toUpperCase()}</span>
+
                 </motion.div>
 
                 <AnimatePresence>                

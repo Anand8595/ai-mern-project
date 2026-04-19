@@ -11,7 +11,7 @@ function History() {
   const [topics , setTopics] = useState([])
   const navigate = useNavigate()
   const{userData}=useSelector((state)=>state.user)
-  const credits=userData.credits
+  const credits=userData?.credits ?? 0
   const [isSidebarOpen, setIsSidebarOpen] =useState(false);
   const [selectedNote, setSelectedNote] = useState(null);
   const [loading, setLoading] = useState(false);
