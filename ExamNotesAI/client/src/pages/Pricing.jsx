@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from "motion/react"
+import axios from "axios";
+
+const serverUrl = import.meta.env.VITE_SERVER_URL || "http://localhost:8000";
 
 function Pricing() {
   const navigate = useNavigate()
@@ -12,7 +15,17 @@ function Pricing() {
     try {
       setPayingAmount(amount)
       setPaying(true)
+
+      const result = await axios.post(serverUrl + "/api/credit/order" , {amount} , 
+      {withCredentials:true})
+
+      if(result.data.url){
+        window.location.href = result.data.url
+      }
+      setPaying(false)
+
     } catch (error) {
+      setPaying(false)
       console.log(error)
     }
   }
