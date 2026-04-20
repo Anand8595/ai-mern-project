@@ -1,8 +1,6 @@
 import Stripe from "stripe";
 import UserModel from "../models/user.model.js";
 
-// ✅ No dotenv here - already loaded by loadEnv.js
-
 if (!process.env.STRIPE_SECRET_KEY) {
   throw new Error("Stripe secret key missing in .env");
 }
@@ -17,13 +15,24 @@ const CREDIT_MAP = {
 
 export const createCreditsOrder = async (req, res) => {
   try {
-    const userId = req.userId;
-    const { amount } = req.body;
+    console.log("👉 API HIT");
+    console.log("👉 BODY:", req.body);
 
-    if (!CREDIT_MAP[amount]) {
+    const userId = req.userId;
+
+    // ✅ FIX 1: amount number madhe convert
+    const amt = Number(req.body.amount);
+
+    // ✅ validation
+    if (!CREDIT_MAP[amt]) {
       return res.status(400).json({
         message: "Invalid credit plan",
       });
+    }
+
+    // ✅ FIX 2: CLIENT_URL check
+    if (!process.env.CLIENT_URL) {
+      throw new Error("CLIENT_URL missing in env");
     }
 
     const session = await stripe.checkout.sessions.create({
@@ -36,23 +45,30 @@ export const createCreditsOrder = async (req, res) => {
           price_data: {
             currency: "inr",
             product_data: {
-              name: `${CREDIT_MAP[amount]} Credits`,
+              name: `${CREDIT_MAP[amt]} Credits`,
             },
-            unit_amount: amount * 100,
+            unit_amount: amt * 100,
           },
           quantity: 1,
         },
       ],
       metadata: {
         userId,
-        credits: CREDIT_MAP[amount],
+        credits: CREDIT_MAP[amt],
       },
     });
 
+    console.log("✅ SESSION CREATED:", session.id);
+
     res.status(200).json({ url: session.url });
+
   } catch (error) {
-    console.log("❌ Stripe error:", error.message);
-    res.status(500).json({ message: "Stripe error" });
+    // ✅ FIX 3: full error print
+    console.log("❌ FULL ERROR 👉", error);
+
+    res.status(500).json({
+      message: error.message || "Stripe error",
+    });
   }
 };
 
@@ -88,6 +104,8 @@ export const stripeWebhook = async (req, res) => {
       },
       { new: true }
     );
+
+    console.log("✅ Credits updated for user:", userId);
   }
 
   res.json({ received: true });
