@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { motion } from "motion/react"
 import axios from "axios";
 
-const serverUrl = import.meta.env.VITE_SERVER_URL || "http://localhost:8000";
+const serverUrl = import.meta.env.VITE_BACKEND_URL;
 
 function Pricing() {
   const navigate = useNavigate()
