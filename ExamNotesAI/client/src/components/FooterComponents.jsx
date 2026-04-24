@@ -1,6 +1,6 @@
 import React from "react"
 import { motion } from "motion/react"
-import logo from "../assets/logo.png"
+import logo from "../assets/finalLogo.png"
 import { useNavigate } from "react-router"
 import { useDispatch } from "react-redux"
 import axios from "axios"
@@ -44,7 +44,7 @@ function Footer() {
             <img
               src={logo}
               alt="logo"
-              className="h-9 w-9 object-contain"/>
+              className="h-12 w-12 object-contain"/>
 
             <span
               className="text-lg font-semibold bg-gradient-to-br from-white 

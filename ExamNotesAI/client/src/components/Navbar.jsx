@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { motion, AnimatePresence } from "motion/react"
-import logo from "../assets/logo.png"
+import logo from "../assets/finalLogo.png"
 import {useDispatch, useSelector} from 'react-redux'
 import axios from 'axios'
 import { serverUrl } from '../App'
@@ -35,7 +35,7 @@ function Navbar() {
       flex items-center justify-between px-8 py-4">
 
         <div className="flex items-center gap-3">
-            <img src={logo} alt="examnotes" className="w-9 h-9" />
+            <img src={logo} className="w-12 h-12 object-contain" />
             <span className="text-lg hidden md:block font-semibold text-white">
                 ExamNotes <span className="text-gray-400">AI</span>
             </span>
