@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 import { motion } from 'motion/react'
-import img from '../assets/img1.png'
+import img from '../assets/HP_img.png'
 import FooterComponents from '../components/FooterComponents'
 import { useNavigate } from 'react-router'
 
@@ -81,6 +81,7 @@ function Home() {
           <img
             src={img}
             alt="img"
+            className="w-full max-w-md mx-auto"
             style={{ transform: "translateZ(35px)"}}
           />
         </div>

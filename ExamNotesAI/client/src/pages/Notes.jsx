@@ -34,7 +34,7 @@ function Notes() {
           <h1 className='text-2xl font-bold
             bg-gradient-to-r from-white via-gray-300 to-white
             bg-clip-text text-transparent'>
-            ExamNotes AI
+            ExamEdge AI
           </h1>
 
           <p className='text-sm text-gray-300 mt-1'>

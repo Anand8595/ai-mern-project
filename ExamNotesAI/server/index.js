@@ -39,7 +39,7 @@ const PORT = process.env.PORT || 5000;
 
 // ✅ Health check route
 app.get("/", (req, res) => {
-  res.json({ message: "ExamNotes AI Backend Running" });
+  res.json({ message: "ExamEdge AI Backend Running" });
 });
 
 // ✅ All routes

@@ -12,12 +12,12 @@ export const pdfDownload = async (req,res) => {
 
     res.setHeader("Content-Type", "application/pdf")
     res.setHeader("Content-Disposition",
-      'attachment; filename="ExamNotesAI.pdf"')
+      'attachment; filename="ExamEdgeAI.pdf"')
 
     doc.pipe(res)
 
     // Title
-    doc.fontSize(20).text("ExamNotes AI", { align: "center" });
+    doc.fontSize(20).text("ExamEdge AI", { align: "center" });
     doc.moveDown();
     doc.fontSize(14).text(`Importance: ${result.importance}`);
     doc.moveDown();

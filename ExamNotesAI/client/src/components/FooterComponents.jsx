@@ -50,11 +50,11 @@ function Footer() {
               className="text-lg font-semibold bg-gradient-to-br from-white 
               via-gray-300 to-white bg-clip-text text-transparent"
               style={{ textShadow: "0 6px 18px rgba(0,0,0,0.4)" }}>
-              ExamNotes <span className="text-gray-400">AI</span>
+              ExamEdge <span className="text-gray-400">AI</span>
             </span>
           </div>
           <p className="text-sm text-gray-300 max-w-sm">
-          ExamNotes AI helps students generate exam-focused notes,
+          ExamEdge AI helps students generate exam-focused notes,
           revision material, diagrams, and printable PDFs using AI.
           </p>
 
@@ -95,7 +95,7 @@ function Footer() {
             </li>
 
             <li className="text-gray-300 hover:text-white transition-colors cursor-pointer">
-              support@examnotes.com
+              support@examedge.com
             </li>
           </ul>
         </div>
@@ -103,7 +103,7 @@ function Footer() {
       </div>
       <div className="my-6 h-px bg-white/10"/>
       <p className="text-center text-xs text-gray-500">
-        @{new Date().getFullYear()} ExamNotes AI. All rights reserved. 
+        @{new Date().getFullYear()} ExamEdge AI. All rights reserved. 
       </p>
     </motion.div>
   )

@@ -121,7 +121,7 @@ function TopicForm({setResult, setLoading, loading, setError}) {
         border border-white/20 placeholder-gray-400 
         text-white 
         focus:outline-none focus:ring-2 focus:ring-white/30"
-        placeholder='Exam Type(e.g. CBSE, JEE, NEET)'
+        placeholder='Exam Type(e.g. SPPU, CBSE, JEE, NEET)'
         onChange={(e) => setExamType(e.target.value)}
         value={examType}/>
 
