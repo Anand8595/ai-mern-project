@@ -19,11 +19,11 @@ https://www.linkedin.com/posts/anand-ahire-142519307_mern-ai-webdevelopment-ugcP
 ---
 
 ## Screenshots
-### Dashboard
-![Dashboard](./Dashboard.png)
-
 ### Login Page
 ![Login](./Login%20page.png)
+
+### Dashboard
+![Dashboard](./Dashboard.png)
 
 ### Notes Generate Page
 ![Notes](./Notes%20generate%20page.png)
